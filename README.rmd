@@ -109,3 +109,8 @@ final_res %>%
 ```
 
 
+
+Remove package
+```r
+remove.packages("addstepr")
+```

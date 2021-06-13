@@ -9,7 +9,7 @@
 
 step_dbscan_fpc_new <- function(terms, role, trained, skip, id, eps,  MinPts, retain, model, data) {
   step(
-    subclass = "dbscan",
+    subclass = "dbscan_fpc",
     terms = terms,
     role = role,
     trained = trained,
@@ -40,7 +40,7 @@ step_dbscan_fpc_new <- function(terms, role, trained, skip, id, eps,  MinPts, re
 #' @param id A character string that is unique to this step to identify it.
 #' @export
 step_dbscan_fpc = function(recipe, ..., role = "predictor", trained = FALSE, skip = FALSE,
-                        eps = NULL, MinPts = NULL, retain = FALSE, id = rand_id("dbscan")) {
+                        eps = NULL, MinPts = NULL, retain = FALSE, id = rand_id("dbscan_fpc")) {
   if (is.null(eps)) stop("eps value is not defined")
   add_step(recipe,
            step_dbscan_fpc_new(terms = recipes::ellipse_check(...),
@@ -175,8 +175,8 @@ tunable.step_dbscan_fpc = function(x, ...) {
   tibble::tibble(
     name = c("eps", "MinPts"),
     call_info = list(
-      list(pkg = NULL, fun = "eps", range=c(0.1,3)), ##一番はじめのnameのパラメータepsに対応するパラメータ範囲
-      list(pkg = NULL, fun = "MinPts", range=c(1,20))  ##一番はじめのnameのパラメータMinPtsに対応するパラメータ範囲
+      list(pkg = "addstepr", fun = "eps", range=c(0.1,3)), ##一番はじめのnameのパラメータepsに対応するパラメータ範囲
+      list(pkg = "addstepr", fun = "MinPts", range=c(1,20))  ##一番はじめのnameのパラメータMinPtsに対応するパラメータ範囲
     ),
     source = "recipe",    #recipe or model_spec
     component = "step_dbscan_fpc",
