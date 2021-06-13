@@ -101,3 +101,9 @@ final_res = final_wf %>%
 final_res %>%
   collect_metrics()
 ```
+
+Remove package
+
+``` r
+remove.packages("addstepr")
+```
