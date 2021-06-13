@@ -324,7 +324,7 @@ tidy.step_dbscan = function(x, ...) {
 # step_dbscanのパラメータをtunableにする関数
 
 #' パラメータepsにレンジを与える関数
-#' @export eps2
+#' @export
 eps2 = function(range = c(0.1, 3), trans = NULL) {
   new_quant_param(
     type = "double",
@@ -337,7 +337,7 @@ eps2 = function(range = c(0.1, 3), trans = NULL) {
 }
 
 #' パラメータminPtsにレンジを与える関数
-#' @export minPts2
+#' @export
 minPts2 = function(range = c(1L, 20L), trans = NULL) {
   new_quant_param(
     type = "integer",
@@ -355,8 +355,8 @@ tunable.step_dbscan = function(x, ...) {
   tibble::tibble(
     name = c("eps", "minPts"),
     call_info = list(
-      list(pkg = NULL, fun = "eps2", range=c(0.1,3)), ##一番はじめのnameのパラメータepsに対応するパラメータ範囲
-      list(pkg = NULL, fun = "minPts2", range=c(1,20))  ##一番はじめのnameのパラメータminPtsに対応するパラメータ範囲
+      list(pkg = "addstepr", fun = "eps2", range=c(0.1,3)), ##一番はじめのnameのパラメータepsに対応するパラメータ範囲
+      list(pkg = "addstepr", fun = "minPts2", range=c(1,20))  ##一番はじめのnameのパラメータminPtsに対応するパラメータ範囲
     ),
     source = "recipe",    #recipe or model_spec
     component = "step_dbscan",
