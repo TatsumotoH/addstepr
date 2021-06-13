@@ -14,7 +14,7 @@ step_dbscan(
   eps = NULL,
   minPts = NULL,
   retain = FALSE,
-  id = rand_id("dbscan2")
+  id = rand_id("dbscan")
 )
 }
 \arguments{

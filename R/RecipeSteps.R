@@ -193,7 +193,7 @@ tunable.step_dbscan_fpc = function(x, ...) {
 #
 step_dbscan_new = function(terms, role, trained, skip, id, eps,  minPts, retain, model, data) {
   step(
-    subclass = "dbscan2",
+    subclass = "dbscan",
     terms = terms,
     role = role,
     trained = trained,
@@ -222,7 +222,7 @@ step_dbscan_new = function(terms, role, trained, skip, id, eps,  minPts, retain,
 #' @param id A character string that is unique to this step to identify it.
 #' @export
 step_dbscan = function(recipe, ..., role = "predictor", trained = FALSE, skip = FALSE,
-                        eps = NULL, minPts = NULL, retain = FALSE, id = rand_id("dbscan2")) {
+                        eps = NULL, minPts = NULL, retain = FALSE, id = rand_id("dbscan")) {
   if (is.null(eps)) stop("eps value is not defined")
   add_step(recipe,
            step_dbscan_new(terms = recipes::ellipse_check(...),
