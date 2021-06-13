@@ -324,7 +324,7 @@ tidy.step_dbscan = function(x, ...) {
 # step_dbscanのパラメータをtunableにする関数
 
 #' パラメータepsにレンジを与える関数
-#' @export
+#' @export eps2
 eps2 = function(range = c(0.1, 3), trans = NULL) {
   new_quant_param(
     type = "double",
@@ -337,7 +337,7 @@ eps2 = function(range = c(0.1, 3), trans = NULL) {
 }
 
 #' パラメータminPtsにレンジを与える関数
-#' @export
+#' @export minPts2
 minPts2 = function(range = c(1L, 20L), trans = NULL) {
   new_quant_param(
     type = "integer",

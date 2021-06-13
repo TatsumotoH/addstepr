@@ -21,6 +21,8 @@ library(workflowsets)
 library(tidymodels)
 library(embed)
 
+library(addstepr)
+
 #for parallel processing
 doParallel::registerDoParallel()
 
