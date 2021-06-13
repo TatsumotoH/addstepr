@@ -1,17 +1,16 @@
-Package: addsteps
+Package: addstepr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: add new step functions for recipes package (tidymodels) 
 Version: 0.0.0.9000
 Author: TatsumotoH
 Maintainer: TatsumotoH <hirofumi.tatsumoto@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: This package adds extra step functions for recipes package. 
+    The addstepr currently add step_dbscan and its tunable parameters.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
 Imports: 
-    Boruta,
     dbscan,
     fpc,
     recipes,
