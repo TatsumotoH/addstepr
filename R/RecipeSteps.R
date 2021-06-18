@@ -7,7 +7,7 @@
 # ここから   step_dbscan_fpc ----
 #
 
-step_dbscan_fpc_new <- function(terms, role, trained, skip, id, eps,  MinPts, retain, model, data) {
+step_dbscan_fpc_new <- function(terms, role, trained, skip, id, eps,  minPts, retain, model, data) {
   step(
     subclass = "dbscan_fpc",
     terms = terms,
@@ -16,7 +16,7 @@ step_dbscan_fpc_new <- function(terms, role, trained, skip, id, eps,  MinPts, re
     skip = skip,
     id = id,
     eps = eps,
-    MinPts = MinPts,
+    minPts = minPts,
     retain = retain,
     model = model,
     data = data
@@ -34,13 +34,13 @@ step_dbscan_fpc_new <- function(terms, role, trained, skip, id, eps,  MinPts, re
 #' @param skip A logical. Should the step be skipped when the recipe is baked
 #'  by [recipes::bake.recipe()]?
 #' @param eps The parameter eps defines radius of neighborhood around a point x.
-#' @param MinPts The parameter MinPts is the minimum number of neighbors within “eps” radius.
+#' @param minPts The parameter MinPts is the minimum number of neighbors within “eps” radius.
 #' @param retain Alogical to specify whether the original predictors should be retained along with the new embedding 
 #'  variables.
 #' @param id A character string that is unique to this step to identify it.
 #' @export
 step_dbscan_fpc = function(recipe, ..., role = "predictor", trained = FALSE, skip = FALSE,
-                        eps = NULL, MinPts = NULL, retain = FALSE, id = rand_id("dbscan_fpc")) {
+                        eps = NULL, minPts = NULL, retain = FALSE, id = rand_id("dbscan_fpc")) {
   if (is.null(eps)) stop("eps value is not defined")
   add_step(recipe,
            step_dbscan_fpc_new(terms = recipes::ellipse_check(...),
@@ -49,7 +49,7 @@ step_dbscan_fpc = function(recipe, ..., role = "predictor", trained = FALSE, ski
                            skip = skip,
                            id = id,
                            eps = eps,
-                           MinPts = MinPts,
+                           minPts = minPts,
                            retain = retain,
                            model = NULL,
                            data = NULL
@@ -69,17 +69,17 @@ prep.step_dbscan_fpc = function(x, training, info = NULL, ...) {
     if (nrow(dat) == 0) stop("No rows remain in dataset after missing values rows omitted")
   }
   if (ncol(dat) == 0) stop("Clusters not created as no numeric columns were found")
-  if (is.null(x$MinPts)) {
-    MinPts <- ncol(dat) + 1
+  if (is.null(x$minPts)) {
+    minPts <- ncol(dat) + 1
   } else {
-    MinPts <- x$MinPts
+    minPts <- x$minPts
   }
 
 
-  mod = fpc::dbscan(data = dat, eps = x$eps, MinPts = MinPts, scale = FALSE, method = "hybrid", seeds = TRUE)
+  mod = fpc::dbscan(data = dat, eps = x$eps, MinPts = minPts, scale = FALSE, method = "hybrid", seeds = TRUE)
 
   if (is.null(mod$isseed)) {
-    stop(paste("No clusters can be detected using MinPts = ", MinPts, "and eps = ", x$eps))
+    stop(paste("No clusters can be detected using MinPts = ", minPts, "and eps = ", x$eps))
   }
 
 
@@ -89,7 +89,7 @@ prep.step_dbscan_fpc = function(x, training, info = NULL, ...) {
                   skip = x$skip,
                   id = x$id,
                   eps = x$eps,
-                  MinPts = x$MinPts,
+                  MinPts = x$minPts,
                   retain = x$retain,
                   model = mod,
                   data = dat)
@@ -157,13 +157,13 @@ eps <- function(range = c(0.1, 3), trans = NULL) {
 
 #パラメータMinPtsにレンジを与える関数
 #' @export
-MinPts <- function(range = c(1L, 20L), trans = NULL) {
+minPts <- function(range = c(1L, 20L), trans = NULL) {
   new_quant_param(
     type = "integer",
     range = range,
     inclusive = c(TRUE, TRUE),
     trans = trans,
-    label = c(MinPts = "MinPts"),
+    label = c(minPts = "minPts"),
     finalize = NULL  #データ確定時(=finalize)に呼び出されるhook関数.データ依存のパラメータレンジ設定に使用
   )
 }
@@ -173,10 +173,10 @@ MinPts <- function(range = c(1L, 20L), trans = NULL) {
 #' @export
 tunable.step_dbscan_fpc = function(x, ...) {
   tibble::tibble(
-    name = c("eps", "MinPts"),
+    name = c("eps", "minPts"),
     call_info = list(
       list(pkg = "addstepr", fun = "eps", range=c(0.1,3)), ##一番はじめのnameのパラメータepsに対応するパラメータ範囲
-      list(pkg = "addstepr", fun = "MinPts", range=c(1,20))  ##一番はじめのnameのパラメータMinPtsに対応するパラメータ範囲
+      list(pkg = "addstepr", fun = "minPts", range=c(1,20))  ##一番はじめのnameのパラメータMinPtsに対応するパラメータ範囲
     ),
     source = "recipe",    #recipe or model_spec
     component = "step_dbscan_fpc",

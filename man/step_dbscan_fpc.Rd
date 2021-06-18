@@ -12,9 +12,9 @@ step_dbscan_fpc(
   trained = FALSE,
   skip = FALSE,
   eps = NULL,
-  MinPts = NULL,
+  minPts = NULL,
   retain = FALSE,
-  id = rand_id("dbscan")
+  id = rand_id("dbscan_fpc")
 )
 }
 \arguments{
@@ -29,7 +29,7 @@ by [recipes::bake.recipe()]?}
 
 \item{eps}{The parameter eps defines radius of neighborhood around a point x.}
 
-\item{MinPts}{The parameter MinPts is the minimum number of neighbors within “eps” radius.}
+\item{minPts}{The parameter MinPts is the minimum number of neighbors within “eps” radius.}
 
 \item{retain}{Alogical to specify whether the original predictors should be retained along with the new embedding 
 variables.}
