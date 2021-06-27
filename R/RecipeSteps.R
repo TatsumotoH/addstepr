@@ -352,8 +352,8 @@ tunable.step_dbscan = function(x, ...) {
   tibble::tibble(
     name = c("eps", "minPts"),
     call_info = list(
-      list(pkg = "addstepr", fun = "eps2", range=c(0.1,3)), ##一番はじめのnameのパラメータepsに対応するパラメータ範囲
-      list(pkg = "addstepr", fun = "minPts2", range=c(1,20))  ##一番はじめのnameのパラメータminPtsに対応するパラメータ範囲
+      list(pkg = "addstepr", fun = "eps", range=c(0.1,3)), ##一番はじめのnameのパラメータepsに対応するパラメータ範囲
+      list(pkg = "addstepr", fun = "minPts", range=c(1,20))  ##一番はじめのnameのパラメータminPtsに対応するパラメータ範囲
     ),
     source = "recipe",    #recipe or model_spec
     component = "step_dbscan",
