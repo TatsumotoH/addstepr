@@ -2,10 +2,10 @@
 % Please edit documentation in R/RecipeSteps.R
 \name{tunable.step_dbscan}
 \alias{tunable.step_dbscan}
-\title{tunable関数にstep_dbscan関数を登録するを}
+\title{パラメータepsにレンジを与える関数}
 \usage{
 \method{tunable}{step_dbscan}(x, ...)
 }
 \description{
-tunable関数にstep_dbscan関数を登録するを
+パラメータepsにレンジを与える関数
 }
