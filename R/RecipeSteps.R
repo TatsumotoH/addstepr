@@ -1,10 +1,7 @@
 # add new step functions for recipes and tunes
 
 
-#
-#
-
-# ここから   step_dbscan_fpc ----
+#  step_dbscan_fpc ----
 #
 
 step_dbscan_fpc_new <- function(terms, role, trained, skip, id, eps,  minPts, retain, model, data) {
