@@ -322,29 +322,29 @@ tidy.step_dbscan = function(x, ...) {
 
 #' パラメータepsにレンジを与える関数
 #' @export
-eps2 = function(range = c(0.1, 3), trans = NULL) {
-  new_quant_param(
-    type = "double",
-    range = range,
-    inclusive = c(TRUE, TRUE),
-    trans = trans,
-    label = c(eps2 = "eps"),
-    finalize = NULL
-  )
-}
-
-#' パラメータminPtsにレンジを与える関数
-#' @export
-minPts2 = function(range = c(1L, 20L), trans = NULL) {
-  new_quant_param(
-    type = "integer",
-    range = range,
-    inclusive = c(TRUE, TRUE),
-    trans = trans,
-    label = c(minPts2 = "minPts"),
-    finalize = NULL  #データ確定時(=finalize)に呼び出されるhook関数.データ依存のパラメータレンジ設定に使用
-  )
-}
+#' eps2 = function(range = c(0.1, 3), trans = NULL) {
+#'   new_quant_param(
+#'     type = "double",
+#'     range = range,
+#'     inclusive = c(TRUE, TRUE),
+#'     trans = trans,
+#'     label = c(eps2 = "eps"),
+#'     finalize = NULL
+#'   )
+#' }
+#' 
+#' #' パラメータminPtsにレンジを与える関数
+#' #' @export
+#' minPts2 = function(range = c(1L, 20L), trans = NULL) {
+#'   new_quant_param(
+#'     type = "integer",
+#'     range = range,
+#'     inclusive = c(TRUE, TRUE),
+#'     trans = trans,
+#'     label = c(minPts2 = "minPts"),
+#'     finalize = NULL  #データ確定時(=finalize)に呼び出されるhook関数.データ依存のパラメータレンジ設定に使用
+#'   )
+#' }
 
 #' tunable関数にstep_dbscan関数を登録するを
 #' @export
