@@ -1,7 +1,7 @@
 Package: addstepr
 Type: Package
 Title: add new step functions for recipes package (tidymodels) 
-Version: 0.0.0.9000
+Version: 0.0.0.9100
 Author: TatsumotoH
 Maintainer: TatsumotoH <hirofumi.tatsumoto@gmail.com>
 Description: This package adds extra step functions for recipes package. 
